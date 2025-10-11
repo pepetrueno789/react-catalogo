@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//zona de importacion
 
-function App() {
-  const [count, setCount] = useState(0)
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import Inicio from "./pages/Inicio"
+import Movil from "./pages/Movil"
+import Laptop from "./pages/Laptop"
+import Tienda from "./pages/Tienda"
+import Detalle from "./pages/Detalle"
+import Vehiculo from "./pages/Vehiculo"
+import Categorias from "./pages/Categorias"
+
+const App = () => {
+  //zona de la logica
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="app">
+          <Header/>
+          <Routes>
+              <Route path="/" element={<Inicio/>}/>
+              <Route path="/inicio" element={<Inicio/>}/>
+              <Route path="/movil" element={<Movil/>}/>
+              <Route path="/laptop" element={<Laptop/>}/>
+              <Route path="/tienda" element={<Tienda/>}/>
+              <Route path="/vehiculo" element={<Vehiculo/>}/>
+              <Route path="/detalle/:id/:title" element={<Detalle/>}/>
+              <Route path="/categorias/:cat/:nombre" element={<Categorias/>}/>
+              <Route path="*" element={<Inicio/>}/>
+          </Routes>
+          <Footer/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </BrowserRouter>
   )
 }
 
