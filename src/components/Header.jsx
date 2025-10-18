@@ -1,8 +1,23 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import FiltroCategoria from "./FiltroCategoria"
+import { useState } from "react";
 
 
 const Header = () => {
+
+    const [txtbuscar, setTxtbuscar] = useState('');
+    const navigate = useNavigate();
+    const manejoTxt = (event) => {
+        setTxtbuscar(event.target.value);
+        console.log(txtbuscar)
+    };
+    const manejoEnvio = (event) => {
+        event.preventDefault();
+        navigate('/busquedas', {
+            state: txtbuscar,
+        });
+
+    };
     return (
         <nav className="navbar navbar-expand-lg bg-menu">
             <div className="container-fluid">
@@ -25,6 +40,9 @@ const Header = () => {
                             <Link to={'/tienda'} className="nav-link" href="#">Tienda</Link>
                         </li>
                         <li className="nav-item">
+                            <Link to={'/tabla'} className="nav-link" href="#">Tabla</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link to={'/vehiculo'} className="nav-link" href="#">Vehiculo</Link>
                         </li>
                         
@@ -37,8 +55,8 @@ const Header = () => {
                             </ul>
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <form className="d-flex" role="search" onSubmit={manejoEnvio}>
+                        <input value={txtbuscar} onChange={manejoTxt} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>

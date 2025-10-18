@@ -10,6 +10,8 @@ import Tienda from "./pages/Tienda"
 import Detalle from "./pages/Detalle"
 import Vehiculo from "./pages/Vehiculo"
 import Categorias from "./pages/Categorias"
+import Busquedas from "./pages/Busquedas"
+import Tabla from "./pages/Tabla"
 
 const App = () => {
   //zona de la logica
@@ -24,6 +26,8 @@ const App = () => {
               <Route path="/movil" element={<Movil/>}/>
               <Route path="/laptop" element={<Laptop/>}/>
               <Route path="/tienda" element={<Tienda/>}/>
+              <Route path="/busquedas" element={<Busquedas/>}/>
+              <Route path="/tabla" element={<Tabla/>}/>
               <Route path="/vehiculo" element={<Vehiculo/>}/>
               <Route path="/detalle/:id/:title" element={<Detalle/>}/>
               <Route path="/categorias/:cat/:nombre" element={<Categorias/>}/>
