@@ -3,7 +3,7 @@ import CardProd from "../components/CardProd";
 
 const API='https://dummyjson.com/products/category/smartphones'
 
-const Movil = () => {
+const Movil = ({carrito, agregarAlCarrito}) => {
     const [datos, setDatos] = useState([]); //datos: Almacena los productos recibidos de la API.
     const [loading, setLoading] = useState(true); //loading: Indica si la carga está en progreso (para mostrar un spinner).
     const [error, setError] = useState(null); //error: Guarda el mensaje de error si la petición falla.
@@ -49,7 +49,7 @@ const Movil = () => {
         </h3>
         <div className="row justify-content-center">
             {datos.map((item, index)=>(
-                <CardProd key={index} item={item}/>
+                <CardProd key={index} item={item} carrito={carrito} agregarAlCarrito={agregarAlCarrito}/>
                 
             ))}
         </div>
